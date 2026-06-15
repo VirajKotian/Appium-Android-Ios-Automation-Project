@@ -1,0 +1,14 @@
+Setup FrameWork
+
+Folder Structure
+-Specs 
+-App
+-Screens (Obj)
+-Data : Test data, doc, img, files etc
+-Utils : Helper functions(CSV file)
+
+
+Utilize global imports ($, browser etc)
+ - import {$, $$, expect, driver} from '@wdio/globals';   //version V9 and above
+Create jsconfig.json file for autocompletion
+-Eslint Extension

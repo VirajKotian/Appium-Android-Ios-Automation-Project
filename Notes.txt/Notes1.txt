@@ -1,0 +1,39 @@
+appPackage 
+Full name of the app 
+Ex: YouTube -'com.google.android.youtube' 
+
+appActivity 
+Certain screen/functionality of the application 
+Ex: MainActivity, AlertDialogSamples
+
+Advantage: 
+Access a screen directly 
+Save time by not going through multiple pages 
+Helps with Test Stabilization
+Eg :         await driver.startActivity('io.appium.android.apis', 'io.appium.android.apis.app.AlertDialogSamples');
+
+
+Dialog/Alert - Android 
+How to work with Dialog / Alert box? 
+Accept Alert 
+Dismiss Alert 
+Click OK/Cancel
+To get text from Alert Box
+
+
+Vertical/Horizontal Scrolling
+Working with elements that aren't displayed within the viewport 
+Find an element that is scrollable Scroll to End
+Scroll to End 
+Scroll Text into View  (stable)
+Set as Horizontal list (for horizontal scrolling)
+
+
+Android Notes app
+Download app
+App Permissions -> Capabilities --> 'appium:autoGrantPermissions': true
+
+
+
+
+

@@ -1,0 +1,27 @@
+Locators in Appium
+1) Accessibility Id :That means you can use accessibility aid for iOS as well as for Android. And because of that, this is the preferred option to go with because unlike any other, if you look
+at the strategies, accessibility aid is something that you can set for both Android and iOS. For example, you can set some kind of Element ID for a particular button or a link. 
+And that accessibility ID is going to be same for both iOS and Android.
+Andriod + iOS
+It does not change with Localization
+
+syntax = await $('~Accessibility_Id')
+
+2) Xpath, index, class Name, Package, text
+
+3)Class Name: Eg TextView, Button, Layout(mostly not unique)
+syntax = const className = await $('android.widget.TextView');
+
+4)Xpath: Go to Selector after Accessibility_Id(the next option)
+dynamic and Flexible(but bit long and difficult to read)
+syntax(xpath):= $('//tagname[@attribute=value]')
+ Eg: const xpathElement = await $('//android.widget.TextView[@content-desc="Action Bar"]')
+Eg:  $('//*[@content-desc="1. Screen Top"]')  //if the xpath is unique
+
+5)Andriod Ui-Automator(selector): Additional search Capabilities(if not xpath or Accessibility_Id)
+syntax = const selector = 'new UiSelector().text("Cancel").className("android.widget.Button")'
+         await $('android=${selector}').click();
+
+        
+$ = single element 
+$$ = multiple elements

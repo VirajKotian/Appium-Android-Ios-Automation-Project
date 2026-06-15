@@ -1,0 +1,10 @@
+Page Object Model(Screen Object Model)
+
+Popular design pattern, helps us to reduce code duplication & improves test maintenance 
+Why POM?
+Optimized and Structured way
+Easier to maintain Large Project
+Code Separation
+Singe Source repository(Locators Reuseability)
+Readable
+

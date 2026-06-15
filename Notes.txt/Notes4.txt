@@ -1,0 +1,36 @@
+Optimize FrameWork
+
+Shared Configuration
+separate for Andriod and IOS Configuration
+
+config (folder)
+- wdio.android.conf.js 
+- wdio.ios.conf.js 
+- wdio.shared.conf.js    --(Existing --> wdio.conf.js)
+
+1) //changes  wdio.ios.conf.js for ios and wdio.android.conf.js  for andriod
+const path = require('path'); 
+const { config } = require('./wdio.shared.conf'); 
+
+config.port = 4723;
+
+config.specs = [ './test/specs/ios/ios-todo-item-screen*.js'];
+
+config.capabilities = [
+
+platformName: "ios", 
+"appium: platformVersion": "14.5", 
+"appium: deviceName": "iPhone 12", 
+"appium: automationName": "XCUITest", 
+"appium: app": path.join(process.cwd(), "app/ios/MVCTodo.app"),
+]
+
+config.services = ['appium'] //if you using browserstack only
+exports.config = config;
+//do similar for android
+
+2) For wdio.shared.conf.js
+remove--> port , capabilities , specs
+
+3) - npx wdio config/wdio.ios.conf.js
+   - npx wdio config/wdio.andriod.conf.js

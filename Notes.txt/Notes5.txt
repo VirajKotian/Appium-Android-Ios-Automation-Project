@@ -1,0 +1,15 @@
+Hooks 
+
+-before, 
+-After, 
+-beforeEach, 
+-AfterEach
+
+BrowserStack
+
+Setup BrowserStack account 
+Upload app to BrowserStack 
+Configure BrowserStack with WebdriverIO 
+Run tests in BrowserStack
+See report in BrowserStack dashboard 
+Securing Credentials --> Using dotenv  -->git ignore -> .env
