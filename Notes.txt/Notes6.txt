@@ -1,0 +1,18 @@
+WebView
+
+browser interaction ---> use wait until after clicking on dynamic link and also use .getcontext() //switchto
+
+
+
+Reporting
+Allure reports
+run test
+npm install @wdio/allure-reporter --save-dev
+npm i allure-commandline --save-dev
+npx allure open
+npx allure generate allure-results --clean
+
+or just 
+
+npx allure open
+

@@ -26,6 +26,14 @@ platformName: "ios",
 ]
 
 config.services = ['appium'] //if you using browserstack only
+   //or
+   config.services: ['appium']
+    // services: [['appium', { args: 
+    //     { //address: 'localhost', 
+    //         port: 4723, 
+    //         relaxedSecurity: true }, 
+    //         logPath: './' }]],        //if there is chrome needed
+
 exports.config = config;
 //do similar for android
 

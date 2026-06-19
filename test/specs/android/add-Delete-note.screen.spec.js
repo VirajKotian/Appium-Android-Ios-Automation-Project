@@ -10,6 +10,8 @@ describe('My Color notes App', () => {
     it('Skip Tutorial', async () => {
         await AddNoteScreen.skipbtn.click();
         await expect(AddNoteScreen.addNoteTxt).toBeDisplayed();
+        // await driver.takeScreenshot();
+        // await driver.saveScreenshot('skipTutorial.png');
     });
 
     it('Add Note', async () => {

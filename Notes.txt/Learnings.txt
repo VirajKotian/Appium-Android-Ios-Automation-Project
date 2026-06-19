@@ -1,0 +1,5 @@
+Github Action CI 
+WebdriverIO
+Browserstack
+Allure Reporting
+Wdio multiple configuration

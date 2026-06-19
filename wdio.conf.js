@@ -1,4 +1,5 @@
 import path from 'path';
+import allure from 'allure-commandline'
 
 export const config = {
     //
@@ -26,6 +27,7 @@ export const config = {
     specs: [
         //'./test/specs/**/*.js'
         './test/specs/android/*spec.js'
+        //'./test/specs/android/webview.spec.js'
        //'./test/specs/android/add-Delete-note.screen.spec.js'
        //'./test/specs/**/ios *. js'
     ],
@@ -126,7 +128,13 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
+    
     services: ['appium'],
+    // services: [['appium', { args: 
+    //     { //address: 'localhost', 
+    //         port: 4723, 
+    //         relaxedSecurity: true }, 
+    //         logPath: './' }]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -149,7 +157,11 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec', ['allure', { 
+        outputDir: 'allure-results', 
+        disableWebdriverStepsReporting: false, 
+        disableWebdriverScreenshotsReporting: false
+    }]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -252,7 +264,12 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
+  
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+        if (error) {     // (!passed)  not passed
+           await browser.takeScreenshot();
+        }},
+ // afterTest: function(test, context, { error, result, duration, passed, retries }) {
     // },
 
 
@@ -296,8 +313,26 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function(exitCode, config, capabilities, results) {
+       const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', 'allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function(exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session

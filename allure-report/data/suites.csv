@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3969","Skip Tutorial","My Color notes App","2026-06-17","passed","2026-06-17","","","",""
+"","11842","Delete a note & check the note in trash can","My Color notes App","2026-06-17","passed","2026-06-17","","","",""
+"","2008","Handle app Permisions","My Color notes App","2026-06-17","passed","2026-06-17","","","",""
+"","13576","Add Note","My Color notes App","2026-06-17","passed","2026-06-17","","","",""
